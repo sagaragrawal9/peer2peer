@@ -5,9 +5,10 @@ import { FiCopy, FiCheck } from 'react-icons/fi';
 
 interface InviteCodeProps {
   port: number | null;
+  filename?: string;
 }
 
-export default function InviteCode({ port }: InviteCodeProps) {
+export default function InviteCode({ port, filename }: InviteCodeProps) {
   const [copied, setCopied] = useState(false);
   
   if (!port) return null;
@@ -21,6 +22,9 @@ export default function InviteCode({ port }: InviteCodeProps) {
   return (
     <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
       <h3 className="text-lg font-medium text-green-800">File Ready to Share!</h3>
+      {filename && (
+        <p className="text-sm text-green-700 mb-1">{filename}</p>
+      )}
       <p className="text-sm text-green-600 mb-3">
         Share this invite code with anyone you want to share the file with:
       </p>

@@ -57,13 +57,13 @@ public class FileSharer {
         @Override
         public void run() {
             try (FileInputStream fis = new FileInputStream(filePath);
-                 OutputStream oss = clientSocket.getOutputStream()) {
-                
+                    OutputStream oss = clientSocket.getOutputStream()) {
+
                 // Send the filename as a header
                 String filename = new File(filePath).getName();
                 String header = "Filename: " + filename + "\n";
                 oss.write(header.getBytes());
-                
+
                 // Send the file content
                 byte[] buffer = new byte[4096];
                 int bytesRead;
